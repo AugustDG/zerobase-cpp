@@ -93,6 +93,8 @@ Result ZeroBase::Uninit()
 
     INFO("Stopping ZeroBase...");
 
+    has_init = false;
+
     Result result = receive_loop_future.get();
     IF_INVALID_RESULT_RETURN(result);
 
@@ -107,8 +109,6 @@ Result ZeroBase::Uninit()
 
     context.shutdown();
     context.close();
-
-    has_init = false;
 
     return Result(true);
 }
