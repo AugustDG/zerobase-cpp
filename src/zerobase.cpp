@@ -10,13 +10,11 @@
  * @brief Constructor for ZeroBase class.
  *
  * @param _main A std::function<bool()> representing the main function of the program.
- * @param _terminated A std::function<void()> representing the function to be called when the program is terminated.
  * @param _msgReceived A std::function<void(const std::string &, const void *)> representing the function to be called when a message is received.
  */
-ZeroBase::ZeroBase(const std::function<bool()> &_main, const std::function<void()> &_terminated, const std::function<void(const std::string &, const void *)> &_msgReceived)
+ZeroBase::ZeroBase(const std::function<bool()> &_main, const std::function<void(const std::string &, const void *)> &_msgReceived)
 {
     main = _main;
-    terminated = _terminated;
     msg_received = _msgReceived;
 
     has_init = false;
@@ -92,9 +90,6 @@ Result ZeroBase::Uninit()
 {
     if (!has_init)
         return Result("ZeroBase not initialized!");
-
-    INFO("Invoking ZeroBase termination callback...");
-    terminated();
 
     INFO("Stopping ZeroBase...");
 

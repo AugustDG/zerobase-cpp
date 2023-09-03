@@ -46,7 +46,7 @@ int main()
     ZbSubSocketConfig sub_config_1 = ZbSubSocketConfig("tcp://localhost:5555", {"A"});
     ZbSubSocketConfig sub_config_2 = ZbSubSocketConfig("tcp://localhost:5555", {"B"});
 
-    zb = new ZeroBase(BaseMain, Terminated, MsgReceived);
+    zb = new ZeroBase(BaseMain, MsgReceived);
 
     result = zb->Init({pub_config}, {sub_config_1, sub_config_2});
     if (!result)
@@ -61,6 +61,8 @@ int main()
         std::cerr << result.msg << std::endl;
         return -1;
     }
+
+    Terminated();
 
     delete zb;
 

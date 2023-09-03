@@ -15,6 +15,7 @@ struct ZbPubSocket
     ZbPubSocket(const ZbPubSocket &_socket) = delete;
 
     ZbPubSocket(zmq::context_t *_ctx, const ZbPubSocketConfig &_config);
+    ~ZbPubSocket();
 };
 
 /// @brief ZeroBase subscriber socket
@@ -27,4 +28,5 @@ struct ZbSubSocket
     ZbSubSocket(const ZbSubSocket &_socket) = delete;
 
     ZbSubSocket(zmq::context_t *_ctx, const ZbSubSocketConfig &_config);
+    ~ZbSubSocket();
 };
