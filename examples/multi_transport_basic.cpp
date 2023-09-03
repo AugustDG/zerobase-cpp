@@ -2,8 +2,6 @@
 #include <thread>
 #include <chrono>
 
-#include "zmq.hpp"
-
 #include "zerobase.h"
 
 ZeroBase *zb;
