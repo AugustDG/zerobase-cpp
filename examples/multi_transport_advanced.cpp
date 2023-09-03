@@ -57,7 +57,7 @@ int main()
     ZbSubSocketConfig sub_config_3 = ZbSubSocketConfig("ipc:///tmp/test.ipc", {"A"});
     ZbSubSocketConfig sub_config_4 = ZbSubSocketConfig("inproc://test", {"A", "B"});
 
-    zb = new ZeroBase(BaseMain, Terminated, MsgReceived);
+    zb = new ZeroBase(BaseMain, MsgReceived);
 
     // the library follows the result patten, so all public methods return a Result object
     // that can be checked for success or failure (along with a message)
@@ -74,6 +74,8 @@ int main()
         std::cerr << result.msg << std::endl;
         return -1;
     }
+
+    Terminated();
 
     delete zb;
 
