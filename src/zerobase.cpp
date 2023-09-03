@@ -72,8 +72,8 @@ Result ZeroBase::Run()
     if (!has_init)
         return Result("ZeroBase not initialized!");
 
-    while (main())
-        ;
+    while (has_init)
+        main();
 
     Result result = Uninit();
     IF_INVALID_RESULT_RETURN(result);
@@ -170,7 +170,7 @@ Result ZeroBase::ReceiveLoop(const ZeroBase *_zb)
 
     INFO("Starting receive loop...");
 
-    while (true)
+    while (_zb->has_init)
     {
         try
         {
